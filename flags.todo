@@ -1,0 +1,15 @@
+(
+    WORKING: {
+        -cf: implemented;
+        -h: implemented;
+        -o: implemented;
+        -d: implemented, to be used more in dev;
+    }
+    NOT WORKING: {
+        -i: no attempt made;
+        -m: ;
+        -f: ;
+        -bc: ;
+        -bcf: ;
+    }
+)

@@ -3,5 +3,6 @@
 /.idea/
 /out/
 /src/out/
+*.bat
 *.jar
 *output.txt

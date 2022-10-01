@@ -2,13 +2,16 @@ package tk.p4rty;
 
 import tk.p4rty.handlers.input.Flags;
 import tk.p4rty.handlers.input.Handler;
+import tk.p4rty.handlers.output.file.Setup;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Date;
 
 import static tk.p4rty.Constants.CONFIG_FILE;
+import static tk.p4rty.Util.isDebugMode;
 
-public class Main { //TODO: push to github(?)
+public class Main {
     public static File OUTPUTFILE;
 
     public static void main(String[] args) {
@@ -25,18 +28,12 @@ public class Main { //TODO: push to github(?)
             return;
         }
         Handler.argsAssignmentHandler(args);
-        OUTPUTFILE = new File(Flags.FILE.getValue() != null ? Flags.FILE.getValue() : "output.txt");
-        try {
-            if (OUTPUTFILE.createNewFile()) {
-                System.out.println("Output file did not exist; created at: " + OUTPUTFILE.getAbsolutePath());
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        if ("true".equals(Flags.DEBUG.getValue())) {
+        //cannot do printOut(String output) before the following; causes NullPointerException
+        Setup.setupFile();
+        Util.printOut(new Date().toString());
+        if (isDebugMode()) {
             for (Flags flag : Flags.values()) {
-                if (flag.getValue() != null) System.out.println(flag.getFlag() + " " + flag.getValue());
+                if (flag.getValue() != null) Util.printOut(flag.getFlag() + " " + flag.getValue());
             }
         }
     }

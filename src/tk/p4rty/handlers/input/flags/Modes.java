@@ -2,8 +2,11 @@ package tk.p4rty.handlers.input.flags;
 
 public enum Modes {
     DEFAULT("", new String[0]),
-    GRAPH("GRAPH", new String[]{"TURNING_POINT", "ROOT", "Y_INTERCEPT"}),
-    TRIG("TRIG", new String[]{"FIND_ANGLE", "FIND_SIDE"});
+    //TODO: what the fuck?? graph??? who decided that was a good idea to attempt to add??
+    QUADRATIC("QUADRATIC", new String[]{"TURNING_POINT", "ROOT", "Y_INTERCEPT", "TBI: GRAPH"}),
+    POLYNOMIAL("POLYNOMIAL", new String[]{"um uhh uhmmmm hmm"}),
+    TRIG("TRIG", new String[]{"FIND_ANGLE", "FIND_SIDE"}),
+    PARSE("PARSE", new String[]{"EVAL"});
 
     private final String string;
     public final String[] functions;

@@ -3,6 +3,7 @@ package tk.p4rty;
 import tk.p4rty.handlers.input.Flags;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 import static tk.p4rty.Main.OUTPUTFILE;
 import static tk.p4rty.handlers.output.file.Write.writeToFile;
@@ -15,8 +16,11 @@ public class Util {
         System.arraycopy(string.toCharArray(), 0, paddedChars, 0, string.length());
         return new String(paddedChars);
     }
+    public static String padString(String string, int padding) {
+        return padString(string, padding, ' ');
+    }
     public static void printOut(String output) {
-        if (Flags.OUTPUT.getValue().equals("file")) {
+        if (Objects.equals(Flags.OUTPUT.getValue(), "file")) {
             writeToFile(OUTPUTFILE, output);
         } else System.out.println(output);
     }
@@ -25,5 +29,8 @@ public class Util {
             if (array[i] == search) return i;
         }
         return -1;
+    }
+    public static boolean isDebugMode() {
+        return Objects.equals(Flags.DEBUG.getValue(), "true");
     }
 }

@@ -4,14 +4,16 @@ import tk.p4rty.Util;
 
 public enum Flags {
     HELP("--help", new String[]{"-h", "--h"}, "Prints this help page. If another flag is specified after this one, it will be highlighted in the page."),
+    INPUT("--input", new String[]{"-i, --i"}, "Allows specification of the variables to be used in calculation."),
     OUTPUT("--output", new String[]{"-o", "--o"}, "Select where the output will be displayed. <console | file>"),
     FILE("--output-file", new String[]{"-of", "--of"}, "Defines the output file for the calculator. Defaults to \"output.txt\" in the current directory."),
+    CLEAR("--clear-file", new String[]{"-cf", "--cf"}, "Clears the output file when set to true, before printing the current runs' output."),
     MODE("--mode", new String[]{"-m", "--m"}, "Sets the mode."),
     FUNCTION("--function", new String[]{"-f", "--f"}, "Picks a function from the desired mode."),
     BOOKCODE("--bookcode", new String[]{"-bc", "--bc"}, "Defines a bookwork code to assign to the answer"),
     BOOKCODEFILE("--bookcodefile", new String[]{"-bcf", "--bcf"}, "Defines a file to output bookwork codes with their answers to. Saved to disk inside the config file."),
 
-    DEBUG("--debug", new String[]{"-d", "--d"}, "Enables the debug mode.");
+    DEBUG("--debug", new String[]{"-d", "--d"}, "Enables the debug mode when set to true.");
 
     private final String flag;
     private final String[] aliases;
@@ -67,6 +69,10 @@ public enum Flags {
     public static void setDefaultsForNulls() {
         if (FILE.getValue() == null) {
             FILE.setValue("output.txt");
+        }
+        if (BOOKCODEFILE.getValue() == null) {
+            //TODO: need to check conf here too
+            BOOKCODEFILE.setValue("bookcodes.txt");
         }
     }
 }
